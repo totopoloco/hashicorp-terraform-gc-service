@@ -1,11 +1,17 @@
+resource "google_service_account" "vm_instance_1" {
+  account_id   = "vm_instance_1"
+  display_name = "Custom SA for VM Instance"
+}
+
 resource "google_compute_instance" "vm_instance_1" {
   name         = "vm-instance-1"
   machine_type = "f1-micro"
   zone         = "europe-west6-b"
+  project = var.project_id_2
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-10"
+      image = "debian-cloud/debian-11"
     }
   }
 
@@ -63,4 +69,9 @@ resource "google_compute_instance" "vm_instance_1" {
   EOF
   sudo systemctl restart nginx
 SCRIPT
+
+  service_account {
+    email  = google_service_account.vm_instance_1.email
+    scopes = ["cloud-platform"]
+  }
 }

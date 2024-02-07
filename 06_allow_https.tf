@@ -1,6 +1,7 @@
 resource "google_compute_firewall" "allow_https_inbound_custom_1" {
   name    = "allow-https-inbound-custom-1"
   network = google_compute_network.vpc_network_custom_1.self_link
+  project = var.project_id_2
 
   allow {
     protocol = "tcp"
