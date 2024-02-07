@@ -4,6 +4,6 @@ resource "google_compute_network" "vpc_network" {
   description             = "VPC network created by Terraform with auto subnets"
   mtu                     = 1460
   routing_mode            = "REGIONAL"
-  project                 = "marco-t-avila-project-3"
+  project = var.project_id_2
 
 }
