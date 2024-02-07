@@ -63,8 +63,4 @@ resource "google_compute_instance" "vm_instance_1" {
   EOF
   sudo systemctl restart nginx
 SCRIPT
-
-  service_account {
-    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
-  }
 }
