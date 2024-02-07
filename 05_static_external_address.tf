@@ -3,4 +3,11 @@ resource "google_compute_address" "external" {
   region       = "europe-west6"
   project      = var.project_id_2
   network_tier = "PREMIUM" // or "STANDARD"
+
+  labels = {
+    environment = "training"
+    owner       = "MTAC"
+    purpose     = "training"
+  }
+
 }
