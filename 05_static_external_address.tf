@@ -3,5 +3,4 @@ resource "google_compute_address" "external" {
   region       = "europe-west6"
   project      = var.project_id_2
   network_tier = "PREMIUM" // or "STANDARD"
-  purpose = "VPC_PEERING"
 }
