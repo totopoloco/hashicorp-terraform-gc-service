@@ -16,12 +16,12 @@ provider "google" {
 }
 
 resource "google_compute_network" "vpc_network" {
-  name = "terraform-network"
+  name         = "terraform-network"
   auto_create_subnetworks = "true"
-  description = "VPC network created by Terraform with auto subnets"
-  mtu = 1460
+  description  = "VPC network created by Terraform with auto subnets"
+  mtu          = 1460
   routing_mode = "REGIONAL"
-  project = "marco-t-avila-project-3"
+  project      = "marco-t-avila-project-3"
 
 }
 
@@ -47,4 +47,30 @@ resource "google_compute_subnetwork" "subnet_2" {
   region        = "europe-west6"
   network       = google_compute_network.vpc_network_custom.self_link
   project       = "marco-t-avila-project-3"
+}
+
+resource "google_compute_firewall" "block_http_inbound_custom" {
+  name    = "block-http-inbound-custom"
+  network = google_compute_network.vpc_network_custom.self_link
+
+  deny {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  direction     = "INGRESS"
+}
+
+resource "google_compute_firewall" "block_http_outbound_custom" {
+  name    = "block-http-outbound-custom"
+  network = google_compute_network.vpc_network_custom.self_link
+
+  deny {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  destination_ranges = ["0.0.0.0/0"]
+  direction          = "EGRESS"
 }
