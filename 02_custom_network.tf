@@ -22,28 +22,28 @@ resource "google_compute_subnetwork" "subnet_2" {
   project = var.project_id_2
 }
 
-#resource "google_compute_firewall" "block_http_inbound_custom" {
-#  name    = "block-http-inbound-custom"
-#  network = google_compute_network.vpc_network_custom_1.self_link
-#
-#  deny {
-#    protocol = "tcp"
-#    ports    = ["80"]
-#  }
-#
-#  source_ranges = ["0.0.0.0/0"]
-#  direction     = "INGRESS"
-#}
-#
-#resource "google_compute_firewall" "block_http_outbound_custom" {
-#  name    = "block-http-outbound-custom"
-#  network = google_compute_network.vpc_network_custom_1.self_link
-#
-#  deny {
-#    protocol = "tcp"
-#    ports    = ["80"]
-#  }
-#
-#  destination_ranges = ["0.0.0.0/0"]
-#  direction          = "EGRESS"
-#}
+resource "google_compute_firewall" "block_http_inbound_custom" {
+  name    = "block-http-inbound-custom"
+  network = google_compute_network.vpc_network_custom_1.self_link
+
+  deny {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  direction     = "INGRESS"
+}
+
+resource "google_compute_firewall" "block_http_outbound_custom" {
+  name    = "block-http-outbound-custom"
+  network = google_compute_network.vpc_network_custom_1.self_link
+
+  deny {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  destination_ranges = ["0.0.0.0/0"]
+  direction          = "EGRESS"
+}
