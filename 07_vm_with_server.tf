@@ -1,5 +1,5 @@
 resource "google_service_account" "vm_instance_1" {
-  account_id   = "vm_instance_1"
+  account_id = "vm-instance-1"
   display_name = "Custom SA for VM Instance"
 }
 
