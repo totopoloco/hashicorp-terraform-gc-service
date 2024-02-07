@@ -5,9 +5,7 @@ resource "google_compute_address" "external" {
   network_tier = "PREMIUM" // or "STANDARD"
 
   labels = {
-    environment = "training"
-    owner       = "MTAC"
-    purpose     = "training"
+    purpose    = "training",
+    created_by = "terraform"
   }
-
 }
