@@ -5,7 +5,7 @@ resource "google_compute_instance" "vm_instance_1" {
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-9"
+      image = "debian-cloud/debian-10"
     }
   }
 
