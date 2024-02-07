@@ -1,5 +1,5 @@
 resource "google_compute_network" "vpc_network_custom_1" {
-  name = "terraform-network-custom-1"
+  name    = "terraform-network-custom-1"
   auto_create_subnetworks = "false"
   description             = "VPC network created by Terraform with custom subnet"
   routing_mode            = "REGIONAL"
