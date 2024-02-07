@@ -1,9 +1,11 @@
 #!/bin/bash
-set -e
+exec > >(tee /var/log/startup.log) 2>&1
+set -ex
 sudo apt-get update
 sudo apt-get install -y nginx
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt -subj "/CN=localhost"
 sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+sudo mkdir -p /etc/nginx/snippets
 cat <<EOF > /etc/nginx/snippets/self-signed.conf
 ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
 ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
