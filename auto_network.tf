@@ -1,5 +1,5 @@
 resource "google_compute_network" "vpc_network" {
-  name                    = "terraform-network"
+  name    = var.network_id_1
   auto_create_subnetworks = "true"
   description             = "VPC network created by Terraform with auto subnets"
   mtu                     = 1460

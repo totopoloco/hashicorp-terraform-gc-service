@@ -16,8 +16,8 @@ resource "google_compute_instance" "vm_instance_1" {
   }
 
   network_interface {
-    network = google_compute_network.vpc_network_custom_1.self_link
-    subnetwork = google_compute_subnetwork.subnet_1.self_link
+    network    = module.custom_network_1.network_self_link
+    subnetwork = module.custom_network_1.network_subnet_1_self_link
 
     access_config {
       nat_ip = google_compute_address.external.address
