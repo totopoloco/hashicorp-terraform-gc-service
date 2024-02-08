@@ -61,7 +61,6 @@ module "vm_instance" {
   source = "./vm_instance_module"
 
   project_id = var.project_id_2
-  zone       = var.project_id_2_zone
   network    = module.custom_network_1.network_self_link
   subnetwork = module.custom_network_1.network_subnet_1_self_link
   nat        = module.external_network.external_address
