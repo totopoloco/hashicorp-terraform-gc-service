@@ -44,3 +44,25 @@ module "custom_network_2" {
   subnet_2_cidr   = var.network_custom_2_subnet_id_2_range_cidr
   subnet_2_region = var.network_custom_2_subnet_id_2_region
 }
+
+module "network_peering" {
+  source = "./network_peering_module"
+
+  network_1_self_link = module.custom_network_1.network_self_link
+  network_2_self_link = module.custom_network_2.network_self_link
+}
+
+module "external_network" {
+  source     = "./external_ip_module"
+  project_id = var.project_id_2
+}
+
+module "vm_instance" {
+  source = "./vm_instance_module"
+
+  project_id = var.project_id_2
+  zone       = var.project_id_2_zone
+  network    = module.custom_network_1.network_self_link
+  subnetwork = module.custom_network_1.network_subnet_1_self_link
+  nat        = module.external_network.external_address
+}

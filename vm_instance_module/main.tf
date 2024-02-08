@@ -1,26 +1,25 @@
 resource "google_service_account" "vm_instance_1" {
-  account_id = "vm-instance-1"
+  account_id   = var.vm_instance
   display_name = "Custom SA for VM Instance"
 }
 
 resource "google_compute_instance" "vm_instance_1" {
-  name         = "vm-instance-1"
-  machine_type = "f1-micro"
-  zone         = "europe-west6-b"
-  project = var.project_id_2
+  name         = var.vm_instance
+  machine_type = var.vm_instance_type
+  zone         = var.vm_instance_zone
+  project      = var.project_id
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-11"
+      image = var.vm_instance_image
     }
   }
 
   network_interface {
-    network    = module.custom_network_1.network_self_link
-    subnetwork = module.custom_network_1.network_subnet_1_self_link
-
+    network    = var.network
+    subnetwork = var.subnetwork
     access_config {
-      nat_ip = google_compute_address.external.address
+      nat_ip = var.nat
     }
   }
 
