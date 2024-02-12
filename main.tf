@@ -65,3 +65,11 @@ module "vm_instance" {
   subnetwork = module.custom_network_1.network_subnet_1_self_link
   nat        = module.external_network.external_address
 }
+
+module "firewall" {
+  source = "./firewall_module"
+
+  firewall_rule_name = var.network_custom_1_firewall_rule_1_name
+  network            = module.custom_network_1.network_self_link
+  project_id         = var.project_id_2
+}
