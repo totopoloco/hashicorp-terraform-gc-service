@@ -8,7 +8,7 @@ output "client_email" {
 }
 
 resource "null_resource" "check_iam_policy" {
-  provisioner "local-exec" {
+  triggers = {
     command = <<EOF
       EXISTS=$(gcloud projects get-iam-policy ${var.project_id} --format=json | \
       jq -r '.bindings[] | select(.role == "${var.role_storage}") | .members[]' | \
@@ -17,12 +17,16 @@ resource "null_resource" "check_iam_policy" {
         echo "Warning: The storage role is already assigned to the client email"
       fi
     EOF
+  }
+
+  provisioner "local-exec" {
+    command     = self.triggers.command
     interpreter = ["/bin/sh", "-c"]
   }
 }
 
 resource "google_project_iam_member" "member" {
-  count   = null_resource.check_iam_policy.id == "" ? 1 : 0
+  count   = null_resource.check_iam_policy.triggers.command == "" ? 1 : 0
   member  = "serviceAccount:${local.client_email}"
   project = var.project_id
   role    = var.role_storage
