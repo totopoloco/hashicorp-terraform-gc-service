@@ -10,9 +10,7 @@ output "client_email" {
 resource "null_resource" "check_iam_policy" {
   triggers = {
     command = <<EOF
-      EXISTS=$(gcloud projects get-iam-policy ${var.project_id} --format=json | \
-      jq -r '.bindings[] | select(.role == "${var.role_storage}") | .members[]' | \
-      grep -q "serviceAccount:${local.client_email}" && echo "true" || echo "false")
+      EXISTS=$(gcloud projects get-iam-policy marco-t-avila-project-3 --format=json | jq -r '.bindings[] | select(.role == "roles/storage.admin") | .members[]' | grep -q "serviceAccount:terraform-command-line@marco-t-avila-project-3.iam.gserviceaccount.com" && echo "true" || echo "false")
       if [ "$EXISTS" = "true" ]; then
         echo "Warning: The storage role is already assigned to the client email"
       fi
