@@ -8,7 +8,8 @@ output "client_email" {
 }
 
 data "google_project_iam_policy" "project" {
-  project = var.project_id
+  provider = google-beta
+  project  = var.project_id
 }
 
 resource "google_project_iam_member" "member" {
