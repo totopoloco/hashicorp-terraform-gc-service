@@ -7,9 +7,22 @@ output "client_email" {
   value = local.client_email
 }
 
-data "google_project_iam_policy" "project" {
+resource "google_project_iam_policy" "project" {
   provider = google-beta
   project  = var.project_id
+
+  policy_data = <<EOF
+{
+  "bindings": [
+    {
+      "role": "roles/storage.admin",
+      "members": [
+        "user:${var.client_email}"
+      ]
+    }
+  ]
+}
+EOF
 }
 
 resource "google_project_iam_member" "member" {
