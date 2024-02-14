@@ -92,3 +92,8 @@ variable "network_custom_2_subnet_id_2_region" {
   description = "The subnet for network 1 in custom mode"
   default     = "europe-west6"
 }
+
+variable "storage_role" {
+  description = "The role for the storage bucket"
+  default     = "roles/storage.admin"
+}
