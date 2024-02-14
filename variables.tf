@@ -97,3 +97,8 @@ variable "storage_role" {
   description = "The role for the storage bucket"
   default     = "roles/storage.admin"
 }
+
+variable "client_email" {
+  description = "The client email"
+  type        = string
+}

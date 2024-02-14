@@ -76,4 +76,5 @@ module "bucket" {
   source       = "./bucket_module"
   project_id   = var.project_id_2
   role_storage = var.storage_role
+  client_email = var.client_email
 }
