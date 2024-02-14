@@ -72,6 +72,7 @@ module "auto_network" {
   project_id = var.project_id_2
 }
 
+# Bucket module
 module "bucket" {
   source       = "./bucket_module"
   project_id   = var.project_id_2
