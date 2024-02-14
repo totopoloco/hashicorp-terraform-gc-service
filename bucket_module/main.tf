@@ -1,6 +1,6 @@
 #Create the role if it does not exist
 locals {
-  client_email = lookup(var, "client_email")
+  client_email = var.client_email
 }
 
 output "client_email" {
