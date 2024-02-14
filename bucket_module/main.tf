@@ -1,4 +1,8 @@
 #Create the role if it does not exist
+data "google_project_iam_policy" "project" {
+  project = var.project_id
+}
+
 locals {
   client_email = var.client_email
 }
@@ -6,6 +10,7 @@ locals {
 output "client_email" {
   value = local.client_email
 }
+
 
 resource "google_project_iam_member" "member" {
   member  = "serviceAccount:${local.client_email}"
