@@ -15,7 +15,7 @@ resource "google_project_iam_policy" "project" {
 {
   "bindings": [
     {
-      "role": "roles/storage.admin",
+      "role": "roles/editor",
       "members": [
         "serviceAccount:${var.client_email}"
       ]
