@@ -17,7 +17,7 @@ resource "google_project_iam_policy" "project" {
     {
       "role": "roles/storage.admin",
       "members": [
-        "user:${var.client_email}"
+        "serviceAccount:${var.client_email}"
       ]
     }
   ]
@@ -26,7 +26,7 @@ EOF
 }
 
 resource "google_project_iam_member" "member" {
-  member  = "user:${local.client_email}"
+  member  = "serviceAccount:${local.client_email}"
   project = var.project_id
   role    = var.role_storage
 }
