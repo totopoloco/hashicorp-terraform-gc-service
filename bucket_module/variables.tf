@@ -25,7 +25,7 @@ variable "bucket_storage_class" {
   type        = string
 }
 
-variable "bucket_versioning_enabled" {
+variable "bucket_versioning" {
   description = "If versioning should be enabled for the bucket"
   type        = bool
 }

@@ -21,7 +21,7 @@ resource "google_storage_bucket" "bucket" {
   storage_class = var.bucket_storage_class
 
   versioning {
-    enabled = var.bucket_versioning_enabled
+    enabled = var.bucket_versioning
   }
 }
 
