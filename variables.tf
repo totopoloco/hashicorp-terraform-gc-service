@@ -104,11 +104,11 @@ variable "client_email" {
 }
 
 variable "bucket_location" {
-  default = "EU"
+  default = "europe-west6"
 }
 
 variable "bucket_storage_class" {
-  default = "STANDARD"
+  default = "REGIONAL"
 }
 
 variable "bucket_versioning" {

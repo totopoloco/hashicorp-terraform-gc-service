@@ -19,6 +19,7 @@ resource "google_storage_bucket" "bucket" {
   location      = var.bucket_location
   name          = var.bucket_name
   storage_class = var.bucket_storage_class
+  force_destroy = true
 
   versioning {
     enabled = var.bucket_versioning
