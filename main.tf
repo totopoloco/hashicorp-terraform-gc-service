@@ -77,15 +77,8 @@ module "auto_network" {
 }
 
 resource "random_string" "random_bucket_name" {
-  length  = 5
+  length  = 10
   special = false
-}
-
-resource "random_uuid" "random_bucket_uuid" {
-  keepers = {
-    # Always create a new UUID when the random_string changes
-    random_string = random_string.random_bucket_name.result
-  }
 }
 
 module "bucket" {
@@ -93,7 +86,7 @@ module "bucket" {
   project_id           = var.project_id_2
   role_storage         = var.storage_role
   client_email         = var.client_email
-  bucket_name          = format("%s-%s", random_string.random_bucket_name.result, random_uuid.random_bucket_uuid.result)
+  bucket_name          = random_string.random_bucket_name.result
   bucket_location      = var.bucket_location
   bucket_storage_class = var.bucket_storage_class
   bucket_versioning    = var.bucket_versioning
