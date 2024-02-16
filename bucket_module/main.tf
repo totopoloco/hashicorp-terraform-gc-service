@@ -27,7 +27,6 @@ resource "google_storage_bucket" "bucket" {
 
 resource "random_pet" "random_content" {
   length  = 10000
-  special = false
   separator = " "
 }
 resource "random_string" "random_filename" {
