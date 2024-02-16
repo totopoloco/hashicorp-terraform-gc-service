@@ -103,10 +103,6 @@ variable "client_email" {
   type        = string
 }
 
-variable "bucket_name" {
-  default = "europe-bucket"
-}
-
 variable "bucket_location" {
   default = "EU"
 }
