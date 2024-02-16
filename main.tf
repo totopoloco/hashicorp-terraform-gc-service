@@ -77,8 +77,12 @@ module "auto_network" {
 }
 
 module "bucket" {
-  source       = "./bucket_module"
-  project_id   = var.project_id_2
-  role_storage = var.storage_role
-  client_email = var.client_email
+  source               = "./bucket_module"
+  project_id           = var.project_id_2
+  role_storage         = var.storage_role
+  client_email         = var.client_email
+  bucket_name          = var.bucket_name
+  bucket_location      = var.bucket_location
+  bucket_storage_class = var.bucket_storage_class
+  bucket_versioning    = var.bucket_versioning
 }

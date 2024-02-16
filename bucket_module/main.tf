@@ -13,3 +13,30 @@ resource "google_project_iam_member" "member" {
   role    = var.role_storage
 }
 # End of the role creation
+
+# Create the bucket
+resource "google_storage_bucket" "bucket" {
+  location      = var.bucket_location
+  name          = var.bucket_name
+  storage_class = var.bucket_storage_class
+
+  versioning {
+    enabled = var.bucket_versioning_enabled
+  }
+}
+
+resource "random_string" "random_content" {
+  length  = 10
+  special = false
+}
+resource "random_string" "random_filename" {
+  length  = 5
+  special = false
+}
+
+resource "google_storage_bucket_object" "object" {
+  name    = format("%s.txt", random_string.random_filename.result)
+  bucket  = google_storage_bucket.bucket.name
+  content = random_string.random_content.result
+}
+# End of the bucket creation

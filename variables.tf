@@ -102,3 +102,19 @@ variable "client_email" {
   description = "The client email"
   type        = string
 }
+
+variable "bucket_name" {
+  default = "europe-bucket"
+}
+
+variable "bucket_location" {
+  default = "EU"
+}
+
+variable "bucket_storage_class" {
+  default = "STANDARD"
+}
+
+variable "bucket_versioning" {
+  default = true
+}
