@@ -25,9 +25,10 @@ resource "google_storage_bucket" "bucket" {
   }
 }
 
-resource "random_string" "random_content" {
-  length  = 10
+resource "random_pet" "random_content" {
+  length  = 10000
   special = false
+  separator = " "
 }
 resource "random_string" "random_filename" {
   length  = 5
@@ -37,6 +38,6 @@ resource "random_string" "random_filename" {
 resource "google_storage_bucket_object" "object" {
   name    = format("%s.txt", random_string.random_filename.result)
   bucket  = google_storage_bucket.bucket.name
-  content = random_string.random_content.result
+  content = random_pet.random_content.id
 }
 # End of the bucket creation
