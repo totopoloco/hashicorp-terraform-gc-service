@@ -76,17 +76,27 @@ module "auto_network" {
   project_id = var.project_id_2
 }
 
-resource "random_string" "random_bucket_name" {
-  length  = 10
+resource "random_string" "random_bucket_name_part_1" {
+  length  = 3
   special = false
 }
+resource "random_string" "random_bucket_name_part_2" {
+  length  = 3
+  special = false
+}
+
+resource "random_string" "random_bucket_name_part_3" {
+  length  = 3
+  special = false
+}
+
 
 module "bucket" {
   source               = "./bucket_module"
   project_id           = var.project_id_2
   role_storage         = var.storage_role
   client_email         = var.client_email
-  bucket_name          = random_string.random_bucket_name.result
+  bucket_name          = format("%s-%s-%s", random_string.random_bucket_name_part_1.result, random_string.random_bucket_name_part_3.result, random_string.random_bucket_name_part_3.result)
   bucket_location      = var.bucket_location
   bucket_storage_class = var.bucket_storage_class
   bucket_versioning    = var.bucket_versioning
