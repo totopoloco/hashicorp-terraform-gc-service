@@ -96,7 +96,7 @@ module "bucket" {
   project_id           = var.project_id_2
   role_storage         = var.storage_role
   client_email         = var.client_email
-  bucket_name          = format("%s-%s-%s", random_string.random_bucket_name_part_1.result, random_string.random_bucket_name_part_3.result, random_string.random_bucket_name_part_3.result)
+  bucket_name          = lower(format("%s-%s-%s", random_string.random_bucket_name_part_1.result, random_string.random_bucket_name_part_2.result, random_string.random_bucket_name_part_3.result))
   bucket_location      = var.bucket_location
   bucket_storage_class = var.bucket_storage_class
   bucket_versioning    = var.bucket_versioning
