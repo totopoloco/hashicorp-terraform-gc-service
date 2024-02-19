@@ -112,5 +112,5 @@ module "postgresql" {
   instance_public_network_name  = var.instance_public_network_name
   instance_public_network_range = var.instance_public_network_range
   instance_database_name        = var.instance_database_name
-  project_id                    = var.project_id_2
+  instance_project_id = var.project_id_2
 }
