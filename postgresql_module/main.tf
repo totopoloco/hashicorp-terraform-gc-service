@@ -23,16 +23,12 @@ resource "google_sql_database_instance" "default" {
 
     ip_configuration {
       ipv4_enabled    = true
+      require_ssl     = true
       private_network = var.instance_network
-
       authorized_networks {
         name  = var.instance_public_network_name
         value = var.instance_public_network_range
       }
-    }
-    database_flags {
-      name  = "ssl"
-      value = "on"
     }
   }
 }
