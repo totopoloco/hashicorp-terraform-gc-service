@@ -48,6 +48,7 @@ resource "google_sql_database_instance" "default" {
   region           = var.instance_region
   settings {
     tier = var.instance_tier
+    deletion_protection_enabled = false
 
     ip_configuration {
       ipv4_enabled    = true
