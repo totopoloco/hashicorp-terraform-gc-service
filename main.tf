@@ -12,7 +12,7 @@ terraform {
 }
 
 provider "google" {
-  #  credentials = file("credentials.json")
+  credentials = file("credentials.json")
   project = var.project_id_2
   region  = var.project_id_2_region
   zone    = var.project_id_2_zone
