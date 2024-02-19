@@ -147,4 +147,8 @@ variable "instance_database_name" {
 variable "role_database_admin" {
   default = "roles/cloudsql.admin"
 }
+
+variable "role_service_networking_admin" {
+  default = "roles/servicenetworking.networksAdmin"
+}
 # End of Database

@@ -112,7 +112,8 @@ module "postgresql" {
   instance_public_network_name  = var.instance_public_network_name
   instance_public_network_range = var.instance_public_network_range
   instance_database_name        = var.instance_database_name
-  instance_project_id = var.project_id_2
-  client_email        = var.client_email
-  role_database_admin = var.role_database_admin
+  instance_project_id           = var.project_id_2
+  client_email                  = var.client_email
+  role_database_admin           = var.role_database_admin
+  role_network_admin            = var.role_service_networking_admin
 }

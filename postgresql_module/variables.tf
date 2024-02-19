@@ -41,3 +41,7 @@ variable "client_email" {
 variable "role_database_admin" {
   description = "The role to assign to the service account for database admin"
 }
+
+variable "role_network_admin" {
+  description = "The role to assign to the service account for database admin"
+}

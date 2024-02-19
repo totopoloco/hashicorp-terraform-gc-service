@@ -7,10 +7,16 @@ output "client_email" {
   value = local.client_email
 }
 
-resource "google_project_iam_member" "member" {
+resource "google_project_iam_member" "member_database_admin" {
   member  = "serviceAccount:${local.client_email}"
   project = var.instance_project_id
   role    = var.role_database_admin
+}
+
+resource "google_project_iam_member" "member_network_admin" {
+  member  = "serviceAccount:${local.client_email}"
+  project = var.instance_project_id
+  role    = var.role_network_admin
 }
 # End of the role creation
 
