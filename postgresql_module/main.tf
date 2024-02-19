@@ -46,6 +46,7 @@ resource "google_sql_database_instance" "default" {
   database_version = var.instance_database_version
   name             = var.instance_name
   region           = var.instance_region
+  depends_on = [google_project_service.service_networking, google_service_networking_connection.private_vpc_connection]
   settings {
     tier = var.instance_tier
     # Remove the protection to allow the deletion of the instance
