@@ -48,6 +48,7 @@ resource "google_sql_database_instance" "default" {
   region           = var.instance_region
   settings {
     tier = var.instance_tier
+    # Remove the protection to allow the deletion of the instance
     deletion_protection_enabled = false
 
     ip_configuration {
