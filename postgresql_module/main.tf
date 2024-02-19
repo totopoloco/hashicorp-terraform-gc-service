@@ -39,7 +39,7 @@ resource "google_sql_user" "default" {
 }
 
 resource "google_sql_ssl_cert" "client_cert" {
-  name_prefix = "client-cert"
+  name = "client-cert"
   common_name = "client"
   instance    = google_sql_database_instance.default.name
 }
