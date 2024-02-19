@@ -143,4 +143,8 @@ variable "instance_public_network_range" {
 variable "instance_database_name" {
   default = "postgresql-db"
 }
+
+variable "role_database_admin" {
+  default = "roles/cloudsql.admin"
+}
 # End of Database

@@ -1,3 +1,19 @@
+#Create the role if it does not exist
+locals {
+  client_email = var.client_email
+}
+
+output "client_email" {
+  value = local.client_email
+}
+
+resource "google_project_iam_member" "member" {
+  member  = "serviceAccount:${local.client_email}"
+  project = var.instance_project_id
+  role    = var.role_database_admin
+}
+# End of the role creation
+
 resource "google_sql_database_instance" "default" {
   database_version = var.instance_database_version
   name             = var.instance_name

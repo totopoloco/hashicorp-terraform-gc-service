@@ -33,3 +33,11 @@ variable "instance_database_name" {
 variable "instance_project_id" {
   description = "The project id"
 }
+
+variable "client_email" {
+  description = "The email for the role to assign to the service account for storage"
+}
+
+variable "role_database_admin" {
+  description = "The role to assign to the service account for database admin"
+}
