@@ -137,7 +137,7 @@ variable "instance_public_network_name" {
 }
 
 variable "instance_public_network_range" {
-  default = "The range of the public network"
+  default = "0.0.0.0/0"
 }
 
 variable "instance_database_name" {
