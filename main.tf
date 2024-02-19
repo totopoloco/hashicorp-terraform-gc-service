@@ -101,3 +101,16 @@ module "bucket" {
   bucket_storage_class = var.bucket_storage_class
   bucket_versioning    = var.bucket_versioning
 }
+
+module "postgresql" {
+  source                        = "./postgresql_module"
+  instance_database_version     = var.instance_database_version
+  instance_name                 = var.instance_name
+  instance_region               = var.instance_region
+  instance_tier                 = var.instance_tier
+  instance_network              = module.custom_network_1.network_self_link
+  instance_public_network_name  = var.instance_public_network_name
+  instance_public_network_range = var.instance_public_network_range
+  instance_database_name        = var.instance_database_name
+  project_id                    = var.project_id_2
+}

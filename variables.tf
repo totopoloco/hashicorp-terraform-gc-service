@@ -114,3 +114,33 @@ variable "bucket_storage_class" {
 variable "bucket_versioning" {
   default = true
 }
+
+# Database
+variable "instance_database_version" {
+  default = "POSTGRES_13"
+}
+
+variable "instance_name" {
+  default = "postgres-instance-1"
+}
+
+variable "instance_region" {
+  default = "europe-west6"
+}
+
+variable "instance_tier" {
+  default = "db-f1-micro"
+}
+
+variable "instance_public_network_name" {
+  default = "access-to-public-network"
+}
+
+variable "instance_public_network_range" {
+  default = "The range of the public network"
+}
+
+variable "instance_database_name" {
+  default = "postgresql-db"
+}
+# End of Database
