@@ -31,8 +31,8 @@ resource "google_sql_database_instance" "default" {
       }
     }
     database_flags {
-      name  = "sslmode"
-      value = "require"
+      name  = "ssl"
+      value = "on"
     }
   }
 }
